@@ -7,7 +7,12 @@ class QuestionsController < ApplicationController
 
 	def show
 		#gives back a specific question
+		@newObj = {}
 		@question = Question.find(params[:id])
+		@answers = @question.answers
+		@newObj['question'] = @question
+		@newObj['answers'] =@answers
+		render json: @newObj, status: 200
 	end
 
 	def create
